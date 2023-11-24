@@ -1,0 +1,22 @@
+@mixin input-button-same-styles () {
+    border: 2px solid black;
+    font-size: larger;
+    padding: .3em .3em;
+}
+
+.search-container {
+    height: fit-content;
+    display: flex;
+    gap: 1rem;
+    margin-bottom: .7rem;
+
+    input {
+        @include input-button-same-styles();
+    }
+
+    button {
+        @include input-button-same-styles();
+        background-color: white;
+    }
+}
+

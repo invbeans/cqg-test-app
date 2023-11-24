@@ -1,0 +1,11 @@
+.list-container {
+    width: fit-content;
+    height: 20em;
+    padding: .5em .7em;
+    overflow-y: scroll;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 2em;
+    row-gap: 3em;
+    border: 2px solid #3d3d3d;
+}
