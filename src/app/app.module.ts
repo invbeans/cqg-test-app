@@ -9,6 +9,9 @@ import { CardListComponent } from './components/card-list/card-list.component';
 import { PackageCardComponent } from './components/package-card/package-card.component';
 import { SearchComponent } from './components/search/search.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DependenciesCountPipe } from './pipes/dependencies-count.pipe';
+import { LoadsCountPipe } from './pipes/loads-count.pipe';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -17,6 +20,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CardListComponent,
     PackageCardComponent,
     SearchComponent,
+    DependenciesCountPipe,
+    LoadsCountPipe,
   ],
   imports: [
     CommonModule,
@@ -24,6 +29,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FontAwesomeModule,
   ],
   providers: [provideRouter(routes)],
   bootstrap: [AppComponent]

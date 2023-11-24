@@ -1,9 +1,14 @@
 <div class="card-container">
     <div class="title">
-        {{package.id}}
+        <p>@if (package.id.split('/').length > 1) {
+            <span class="highlighted">{{package.id.split('/')[0]}}/</span>{{package.id.split('/')[1]}}  
+        } @else {
+            {{package.id}}
+        }
+        </p>
     </div>
     <div class="information">
-        <p>{{package.weeklyDownloads}}</p>
-        <p class="dependencies">{{package.dependencyCount}}</p>
+        <p>{{package.weeklyDownloads | loadsCount}}<span><fa-icon [icon]="faDownload" size="xs"></fa-icon></span></p>
+        <p class="dependencies">{{package.dependencyCount | dependenciesCount}}</p>
     </div>
 </div>

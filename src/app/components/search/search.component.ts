@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { faArrowsRotate } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-search',
@@ -8,4 +9,5 @@ import { FormControl } from '@angular/forms';
 })
 export class SearchComponent {
   packageName = new FormControl('');
+  faArrowsRotate = faArrowsRotate;
 }

@@ -7,5 +7,5 @@
     grid-template-columns: repeat(3, 1fr);
     column-gap: 2em;
     row-gap: 3em;
-    border: 2px solid #3d3d3d;
+    border: var(--dark-borders);
 }

@@ -1,5 +1,5 @@
 @mixin input-button-same-styles () {
-    border: 2px solid black;
+    border: var(--dark-borders);
     font-size: larger;
     padding: .3em .3em;
 }

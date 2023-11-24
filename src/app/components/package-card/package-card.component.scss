@@ -1,17 +1,25 @@
 .card-container {
-    width: 10rem;
+    width: 14rem;
     min-width: fit-content;
     height: fit-content;
     display: flex;
     flex-direction: column;
-    border: 2px solid black;
+    border: var(--dark-borders);
     border-radius: 15px;
     font-size: larger;
 }
 
 .title {
-    padding: .3rem .7rem;
-    border-bottom: 2px solid black;
+    padding: .3rem 1rem;
+    border-bottom: var(--dark-borders);
+    font-weight: 600;
+    p {
+        margin: 0;
+        color: var(--gray-fonts-color);
+    }
+    .highlighted {
+        color: rgb(244, 166, 21);
+    }
 }
 
 .information {
@@ -19,5 +27,11 @@
     p {
         margin: 0;
         margin-top: .6rem;
+        span {
+            padding-left: .7em;
+        }
+    }
+    .dependencies {
+        color: var(--gray-fonts-color);
     }
 }
