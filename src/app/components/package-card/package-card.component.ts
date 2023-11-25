@@ -25,4 +25,20 @@ export class PackageCardComponent {
     this.hovered = false;
     this.cleanTempDependencies.emit();
   }
+
+  isCompositeId(): boolean {
+    return this.package.id.split('/').length > 1;
+  }
+
+  getIdHighlitedPart(): string {
+    return this.package.id.split('/')[0];
+  }
+
+  getIdNormalPart(): string {
+    if (this.isCompositeId()) {
+      return this.package.id.split('/')[1];
+    } else {
+      return this.package.id;
+    }
+  }
 }

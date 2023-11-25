@@ -27,7 +27,7 @@
     width: 48em;
     height: 20em;
     padding: .5em .7em;
-    overflow-y: scroll;
+    overflow-y: auto;
     display: grid;
     grid-template-columns: repeat(3, 14rem);
     column-gap: 1.6em;

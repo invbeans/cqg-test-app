@@ -1,10 +1,10 @@
 <div class="card-container" (mouseenter)="handleMouseEnter()" (mouseleave)="handleMouseLeave()">
     <div class="title" [ngClass]="{'hovered-title': hovered}" 
     [ngClass]="{'dependency-title': isDependencyOfHoveredPackage}">
-        <p>@if (package.id.split('/').length > 1) {
-            <span class="highlighted">{{package.id.split('/')[0]}}/</span>{{package.id.split('/')[1]}}  
+        <p>@if (isCompositeId()) {
+            <span class="highlighted">{{getIdHighlitedPart()}}/</span>{{getIdNormalPart()}}  
         } @else {
-            {{package.id}}
+            {{getIdNormalPart()}}
         }
         </p>
     </div>
