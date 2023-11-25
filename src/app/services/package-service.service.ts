@@ -51,7 +51,7 @@ export class PackageService {
   }
 
   filterPackages(query: string): Package[] {
-    if(!this.packages) {
+    if(this.packages.length == 0) {
       return [];
     }
     if(query === '') {
