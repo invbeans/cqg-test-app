@@ -1,5 +1,6 @@
-<div class="card-container">
-    <div class="title">
+<div class="card-container" (mouseenter)="handleMouseEnter()" (mouseleave)="handleMouseLeave()">
+    <div class="title" [ngClass]="{'hovered-title': hovered}" 
+    [ngClass]="{'dependency-title': isDependencyOfHoveredPackage}">
         <p>@if (package.id.split('/').length > 1) {
             <span class="highlighted">{{package.id.split('/')[0]}}/</span>{{package.id.split('/')[1]}}  
         } @else {

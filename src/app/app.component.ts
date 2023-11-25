@@ -12,6 +12,7 @@ import { PackageService } from './services/package-service.service';
 export class AppComponent implements OnInit {
   title = 'test-app';
   packages: Package[] | undefined;
+  tempDependencies: string[] = [];
 
   constructor(
     private packageService: PackageService
@@ -19,11 +20,32 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadInitData();
-
   }
 
-  loadInitData(): void {
+  loadInitData() {
+    this.cleanTempVariables();
     this.packageService.getPackages()
     .subscribe(fetchedPackages => this.packages = fetchedPackages)
+  }
+
+  cleanTempVariables() {
+    this.cleanTempDependencies();
+  }
+
+  refreshPackages() {
+    this.loadInitData();
+  }
+
+  getDependenciesById(id: string) {
+    this.packageService.getDependencies(id)
+    .subscribe(fetchedDependencies => this.tempDependencies = fetchedDependencies);
+  }
+
+  filterPackages(query: string) {
+    this.packages = this.packageService.filterPackages(query);
+  }
+
+  cleanTempDependencies() {
+    this.tempDependencies = [];
   }
 }

@@ -1,9 +1,21 @@
 <main>
     <div class="content">
-        <app-search></app-search>
+        <app-search
+            (refreshEvent)="refreshPackages()"
+            (filterPackages)="filterPackages($event)"
+        ></app-search>
         <app-card-list>
-            @for (package of packages; track package.id) {
-                <app-package-card [package]="package"></app-package-card>
+            @if (packages) {
+                @for (package of packages; track package.id) {
+                    <app-package-card 
+                        (fetchDependencies)="getDependenciesById(package.id)"
+                        (cleanTempDependencies)="cleanTempDependencies()"
+                        [package]="package"
+                        [isDependencyOfHoveredPackage] = "tempDependencies.includes(package.id)"
+                    ></app-package-card>
+                }
+            } @else {
+                <p>Подгружаем пакеты...</p>
             }
         </app-card-list>
     </div>

@@ -1,4 +1,10 @@
 <div class="search-container">
-    <input id="packageName" type="text" placeholder="Search..." [formControl]="packageName"/>
-    <button><fa-icon [icon]="faArrowsRotate" size="lg"></fa-icon></button>
+    <input 
+        id="packageName"
+        type="text"
+        placeholder="Search..."
+        [formControl]="packageName"
+        (input)="handleInputChange()"
+    />
+    <button (click)="refreshPackages()"><fa-icon [icon]="faArrowsRotate" size="lg"></fa-icon></button>
 </div>

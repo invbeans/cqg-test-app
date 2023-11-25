@@ -29,17 +29,17 @@ export class PackageService {
       );
   }
 
-  //пока думаю, что он будет вызываться при хавере
-  //поэтому проверка, что поле не пустое
   getDependencies(id: string): Observable<string[]> {
     let requiredPackage = this.packages.find(p => p.id === id);
-    //мб улетит если undefined
-    //надеюсь общий subscribe получится в итоге
-    if(requiredPackage!.dependencies !== null) {
+    if(requiredPackage?.dependencyCount == 0) {
+      return of([]);
+    }
+    if(requiredPackage!.dependencies) {
       return of(requiredPackage!.dependencies);
     }
     else {
-      return this.http.get<string[]>(this.apiUrl + `${id}/dependencies`, this.httpOptions)
+      const encodedId = encodeURIComponent(id);
+      return this.http.get<string[]>(this.apiUrl + `${encodedId}/dependencies`, this.httpOptions)
       .pipe(
         map(fetchedDependencies => {
           this.packages.find(p => p.id === id)!.dependencies = null || fetchedDependencies;
@@ -48,6 +48,16 @@ export class PackageService {
         catchError(this.handleError<string[]>('getDependencies', []))
       )
     }
+  }
+
+  filterPackages(query: string): Package[] {
+    if(!this.packages) {
+      return [];
+    }
+    if(query === '') {
+      return this.packages;
+    }
+    return this.packages.filter(p => p.id.toLowerCase().includes(query.toLowerCase()));
   }
 
   private handleError<T>(method: string, result?: T) {
