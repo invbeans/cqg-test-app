@@ -42,3 +42,31 @@
         background-color: var(--dependency-title-hover-color);
     }
 }
+
+/* phones */
+@media screen and (width <= 435px) and (orientation: portrait) {
+    .card-container {
+        width: 9em;
+        font-size: medium;
+        .title {
+            padding: .2rem 1rem;
+        }
+    }
+}
+
+@media screen and (width <= 935px) and (orientation: landscape) {
+    .card-container {
+        font-size: medium;
+        .title {
+            padding: .2rem 1rem;
+        }
+    }
+}
+
+/* tablets when portrait */
+@media screen and (435px < width <=1024px) and (orientation: portrait) {
+    .card-container {
+        width: 12em;
+        font-size: medium;
+    }
+}

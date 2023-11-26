@@ -13,10 +13,12 @@ export class SearchComponent {
   packageName = new FormControl('');
   faArrowsRotate = faArrowsRotate;
 
+  // Передача события перезагрузки главной странице
   refreshPackages() {
     this.refreshEvent.emit();
   }
 
+  // Передача события ввода в поле поиска 
   handleInputChange() {
     if (!this.packageName.value) {
       this.filterPackages.emit('');

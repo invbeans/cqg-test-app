@@ -33,5 +33,42 @@
     column-gap: 1.6em;
     row-gap: 2em;
     border: var(--dark-borders);
+    justify-content: center;
     @include scrollbar-styles();
+}
+
+/* phones */
+@media screen and (width <= 435px) and (orientation: portrait) {
+    .list-container {
+        width: 22em;
+        grid-template-columns: repeat(2, 9rem);
+        row-gap: 1.3em;
+        column-gap: 1.5em;
+        padding: .5em 0;
+        overflow-x: hidden;
+    }
+}
+
+@media screen and (width <= 935px) and (orientation: landscape) {
+    .list-container {
+        width: 36em;
+        height: 15em;
+        grid-template-columns: repeat(2, 14rem);
+        row-gap: 1.3em;
+        column-gap: 1.5em;
+        padding: .5em 0;
+        overflow-x: hidden;
+    }
+}
+
+/* tablets when portrait */
+@media screen and (435px < width <= 1020px) and (orientation: portrait) {
+    .list-container {
+        width: 42em;
+        grid-template-columns: repeat(3, 12rem);
+        row-gap: 1.3em;
+        column-gap: 1.5em;
+        padding: .5em 0;
+        overflow-x: hidden;
+    }
 }

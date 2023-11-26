@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
     private packageService: PackageService
   ) {}
 
+  // Загрузка пакетов при инициализации компонента
   ngOnInit(): void {
     this.loadPackages();
   }
@@ -24,10 +25,12 @@ export class AppComponent implements OnInit {
     .subscribe(fetchedPackages => this.packages = fetchedPackages)
   }
 
+  // Обновление пакетов (загрузка с сервера заново)
   refreshPackages() {
     this.loadPackages();
   }
 
+  // Фильтрация пакетов
   filterPackages(query: string) {
     this.packages = this.packageService.filterPackages(query);
   }
