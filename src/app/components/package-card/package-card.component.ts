@@ -14,7 +14,7 @@ export class PackageCardComponent{
 
   constructor(private packageService: PackageService){};
 
-  checkIfADependency() {
+  checkIfADependency(): boolean {
     return this.packageService.checkIfPackageIsDependencyOfHovered(this.package.id);
   }
 

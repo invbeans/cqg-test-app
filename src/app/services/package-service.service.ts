@@ -56,7 +56,7 @@ export class PackageService {
     return this.packages.filter(p => p.id.toLowerCase().includes(query.toLowerCase()));
   }
 
-  checkIfPackageIsDependencyOfHovered(id: string) {
+  checkIfPackageIsDependencyOfHovered(id: string): boolean {
     return this.tempDependencies.includes(id);
   }
 
