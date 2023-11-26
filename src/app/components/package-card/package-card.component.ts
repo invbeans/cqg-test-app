@@ -10,7 +10,6 @@ import { PackageService } from '../../services/package-service.service';
 })
 export class PackageCardComponent{
   @Input({ required: true }) package!: Package;
-  @Output() fetchDependencies = new EventEmitter<string>();
   faDownload = faDownload;
 
   constructor(private packageService: PackageService){};
@@ -20,7 +19,7 @@ export class PackageCardComponent{
   }
 
   handleMouseEnter() {
-    this.fetchDependencies.emit(this.package.id);
+    this.packageService.getDependencies(this.package.id);
   }
 
   handleMouseLeave() {

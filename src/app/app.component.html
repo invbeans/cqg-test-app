@@ -7,8 +7,7 @@
         <app-card-list>
             @if (packages) {
                 @for (package of packages; track package.id) {
-                    <app-package-card 
-                        (fetchDependencies)="getDependenciesById(package.id)"
+                    <app-package-card
                         [package]="package"
                     ></app-package-card>
                 }

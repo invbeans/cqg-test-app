@@ -28,10 +28,6 @@ export class AppComponent implements OnInit {
     this.loadPackages();
   }
 
-  getDependenciesById(id: string) {
-    this.packageService.getDependencies(id);
-  }
-
   filterPackages(query: string) {
     this.packages = this.packageService.filterPackages(query);
   }
