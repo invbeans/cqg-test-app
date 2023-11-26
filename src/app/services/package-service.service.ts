@@ -8,19 +8,15 @@ import { Observable, catchError, of, map } from 'rxjs';
 })
 export class PackageService {
   private packages: Package[] = [];
-  private apiUrl: string = 'http://localhost:3000/packages/'
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
+  private apiUrl: string = 'http://localhost:3000/packages/';
+  tempDependencies: string[] = [];
+  constructor(private http: HttpClient) { };
 
-  constructor(private http: HttpClient) { }
-
-  // подгружать это в ngoninit
   getPackages(): Observable<Package[]> {
-    return this.http.get<Package[]>(this.apiUrl, this.httpOptions)
+    this.cleanTempDependencies();
+    return this.http.get<Package[]>(this.apiUrl)
       .pipe(
         map(fetchedPackages => {
-          //сработает??
           this.packages = fetchedPackages;
           console.log(fetchedPackages);
           return this.packages;
@@ -29,35 +25,43 @@ export class PackageService {
       );
   }
 
-  getDependencies(id: string): Observable<string[]> {
+  getDependencies(id: string): void {
     let requiredPackage = this.packages.find(p => p.id === id);
-    if(requiredPackage?.dependencyCount == 0) {
-      return of([]);
+    if (requiredPackage?.dependencyCount == 0) {
+      this.tempDependencies = [];
     }
-    if(requiredPackage!.dependencies) {
-      return of(requiredPackage!.dependencies);
+    if (requiredPackage!.dependencies) {
+      this.tempDependencies = requiredPackage!.dependencies;
     }
     else {
       const encodedId = encodeURIComponent(id);
-      return this.http.get<string[]>(this.apiUrl + `${encodedId}/dependencies`, this.httpOptions)
-      .pipe(
-        map(fetchedDependencies => {
+      this.http.get<string[]>(this.apiUrl + `${encodedId}/dependencies`)
+        .pipe(
+          catchError(this.handleError<string[]>('getDependencies', []))
+        )
+        .subscribe(fetchedDependencies => {
           this.packages.find(p => p.id === id)!.dependencies = null || fetchedDependencies;
-          return fetchedDependencies;
-        }),
-        catchError(this.handleError<string[]>('getDependencies', []))
-      )
+          this.tempDependencies = fetchedDependencies;
+        })
     }
   }
 
   filterPackages(query: string): Package[] {
-    if(this.packages.length == 0) {
+    if (this.packages.length == 0) {
       return [];
     }
-    if(query === '') {
+    if (query === '') {
       return this.packages;
     }
     return this.packages.filter(p => p.id.toLowerCase().includes(query.toLowerCase()));
+  }
+
+  checkIfPackageIsDependencyOfHovered(id: string) {
+    return this.tempDependencies.includes(id);
+  }
+
+  cleanTempDependencies() {
+    this.tempDependencies = [];
   }
 
   private handleError<T>(method: string, result?: T) {

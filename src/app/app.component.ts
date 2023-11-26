@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
 import { Package } from './models/package';
 import { PackageService } from './services/package-service.service';
 
@@ -12,40 +10,29 @@ import { PackageService } from './services/package-service.service';
 export class AppComponent implements OnInit {
   title = 'test-app';
   packages: Package[] | undefined;
-  tempDependencies: string[] = [];
 
   constructor(
     private packageService: PackageService
   ) {}
 
   ngOnInit(): void {
-    this.loadInitData();
+    this.loadPackages();
   }
 
-  loadInitData() {
-    this.cleanTempVariables();
+  loadPackages() {
     this.packageService.getPackages()
     .subscribe(fetchedPackages => this.packages = fetchedPackages)
   }
 
-  cleanTempVariables() {
-    this.cleanTempDependencies();
-  }
-
   refreshPackages() {
-    this.loadInitData();
+    this.loadPackages();
   }
 
   getDependenciesById(id: string) {
-    this.packageService.getDependencies(id)
-    .subscribe(fetchedDependencies => this.tempDependencies = fetchedDependencies);
+    this.packageService.getDependencies(id);
   }
 
   filterPackages(query: string) {
     this.packages = this.packageService.filterPackages(query);
-  }
-
-  cleanTempDependencies() {
-    this.tempDependencies = [];
   }
 }

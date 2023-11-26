@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet, provideRouter } from '@angular/router';
-import { routes } from './app.routes';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { CardListComponent } from './components/card-list/card-list.component';
@@ -25,13 +23,12 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   ],
   imports: [
     CommonModule,
-    RouterOutlet,
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
     FontAwesomeModule,
   ],
-  providers: [provideRouter(routes)],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,6 @@
 <div class="card-container" (mouseenter)="handleMouseEnter()" (mouseleave)="handleMouseLeave()">
-    <div class="title" [ngClass]="{'hovered-title': hovered}" 
-    [ngClass]="{'dependency-title': isDependencyOfHoveredPackage}">
+    <div class="title" 
+    [ngClass]="{'dependency-title': checkIfADependency()}">
         <p>@if (isCompositeId()) {
             <span class="highlighted">{{getIdHighlitedPart()}}/</span>{{getIdNormalPart()}}  
         } @else {

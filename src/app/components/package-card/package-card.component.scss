@@ -7,40 +7,38 @@
     border: var(--dark-borders);
     border-radius: 15px;
     font-size: larger;
-}
-
-.title {
-    padding: .3rem 1rem;
-    border-bottom: var(--dark-borders);
-    font-weight: 600;
-    border-radius: 15px 15px 0 0;
-    p {
-        margin: 0;
-        color: var(--gray-fonts-color);
-    }
-    .highlighted {
-        color: var(--orange-fonts-color);
-    }
-}
-
-.hovered-title {
-    background-color: var(--package-title-hover-color);
-}
-
-.dependency-title {
-    background-color: var(--dependency-title-hover-color);
-}
-
-.information {
-    padding: 0 .7rem 1.4rem;
-    p {
-        margin: 0;
-        margin-top: .6rem;
-        span {
-            padding-left: .7em;
+    &:hover {
+        .title {
+            background-color: var(--package-title-hover-color);
         }
     }
-    .dependencies {
-        color: var(--gray-fonts-color);
+    .title {
+        padding: .3rem 1rem;
+        border-bottom: var(--dark-borders);
+        font-weight: 600;
+        border-radius: 15px 15px 0 0;
+        p {
+            margin: 0;
+            color: var(--gray-fonts-color);
+        }
+        .highlighted {
+            color: var(--orange-fonts-color);
+        }
+    }
+    .information {
+        padding: 0 .7rem 1.4rem;
+        p {
+            margin: 0;
+            margin-top: .6rem;
+            span {
+                padding-left: .7em;
+            }
+        }
+        .dependencies {
+            color: var(--gray-fonts-color);
+        }
+    }
+    .dependency-title {
+        background-color: var(--dependency-title-hover-color);
     }
 }

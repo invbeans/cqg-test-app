@@ -9,9 +9,7 @@
                 @for (package of packages; track package.id) {
                     <app-package-card 
                         (fetchDependencies)="getDependenciesById(package.id)"
-                        (cleanTempDependencies)="cleanTempDependencies()"
                         [package]="package"
-                        [isDependencyOfHoveredPackage] = "tempDependencies.includes(package.id)"
                     ></app-package-card>
                 }
             } @else {
