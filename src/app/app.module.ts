@@ -8,7 +8,7 @@ import { PackageCardComponent } from './components/package-card/package-card.com
 import { SearchComponent } from './components/search/search.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DependenciesCountPipe } from './pipes/dependencies-count.pipe';
-import { LoadsCountPipe } from './pipes/loads-count.pipe';
+import { RoundThousands } from './pipes/round-thousands.pipe';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
@@ -19,7 +19,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     PackageCardComponent,
     SearchComponent,
     DependenciesCountPipe,
-    LoadsCountPipe,
+    RoundThousands,
   ],
   imports: [
     CommonModule,

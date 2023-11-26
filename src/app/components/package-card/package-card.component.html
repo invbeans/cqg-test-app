@@ -9,7 +9,7 @@
         </p>
     </div>
     <div class="information">
-        <p>{{package.weeklyDownloads | loadsCount}}<span><fa-icon [icon]="faDownload" size="xs"></fa-icon></span></p>
-        <p class="dependencies">{{package.dependencyCount | dependenciesCount}}</p>
+        <p>{{package.weeklyDownloads | roundThousands}}<span><fa-icon [icon]="faDownload" size="xs"></fa-icon></span></p>
+        <p class="dependencies">{{package.dependencyCount | roundThousands | dependenciesCount}}</p>
     </div>
 </div>

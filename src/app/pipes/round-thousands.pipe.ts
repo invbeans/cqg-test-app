@@ -1,9 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'loadsCount',
+  name: 'roundThousands',
 })
-export class LoadsCountPipe implements PipeTransform {
+export class RoundThousands implements PipeTransform {
 
   transform(value: number): string {
     if (value >= 1000) {

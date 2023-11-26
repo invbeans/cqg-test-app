@@ -5,8 +5,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class DependenciesCountPipe implements PipeTransform {
 
-  transform(value: number): string {
-    if (value == 1) {
+  transform(value: number | string): string {
+    if (value === 1) {
       return `${value} dependency`
     } else {
       return `${value} dependencies`
